@@ -17,6 +17,8 @@ function UserComp(props) {
     const [posts, setPosts] = useState([])
 
     const [allCompleted, setAllCompleted] = useState(false)
+    
+    const [newUserData, setNewUserData] = useState({ id: props.userData.id, name: props.userData.name, email:props.userData.email})
 
     async function getTodosAndPosts() {
 
@@ -29,9 +31,6 @@ function UserComp(props) {
 
         resp = await axios.get("https://jsonplaceholder.typicode.com/posts/?userId=" + props.userData.id)
         setPosts(resp.data)
-    }
-    const updateUser = async()=>{
-        let resp = await axios.put("https://jsonplaceholder.typicode.com/users/"+props.userData.id)
     }
     const deleteUser = () => {
         axios.delete("https://jsonplaceholder.typicode.com/users/" + props.userData.id)
@@ -46,20 +45,26 @@ function UserComp(props) {
 
         setAllCompleted(arr.every(v=>v.completed===true))
     }
-    const search = () => {
-        
-    }
-    return <div>
+    
+    
+        return <div>
         
     
         <div style={{ border: allCompleted ? "1px solid green" : "1px solid red", padding: "10px", width: "50%", float: "left" }}>
         <span onClick={getTodosAndPosts}>ID:{props.userData.id}</span><br /><br />
-        Name: <input type="text" value={props.userData.name} /><br/><br/>
-        Email: <input type="text" value={props.userData.email} /><br /><br />
+            Name: <input type="text" onfocus="this.value=''" value={newUserData.name}
+                onChange={e => setNewUserData({ ...newUserData, name: e.target.value })} /><br /><br />
+        
+            Email: <input type="text" value={newUserData.email}
+                onChange={e => setNewUserData({ ...newUserData, email: e.target.value })} /><br /><br />
         
         <input type="button" value="Other data" onMouseOver={getOtherData} style={{ mergin: "18px" }} />
-        <input type="button" value="Update" style={{ background: "orange" }} onClick={updateUser } />
-        <input type="button" value="Delete" style={{background:"orange"}} onClick={deleteUser} />
+        
+        <input type="button" value="Update" style={{ background: "orange" }}
+                onClick={() => props.callback(newUserData)} />
+            
+        <input type="button" value="Delete" style={{ background: "orange" }}
+                    onClick={() => props.deleteCallBack(newUserData.id)} />
 </div>
         <div style={{ padding: "10px", width: "30%", float: "right" }}>
             {
@@ -86,6 +91,7 @@ function UserComp(props) {
 
     
     </div>
+    
 }
 
 export default UserComp;

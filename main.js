@@ -18,6 +18,24 @@ function MainComp() {
         let resp = await axios.get("https://jsonplaceholder.typicode.com/users")
         setUsers(resp.data)
     }
+
+    async function updateUserLocal(user) {
+        
+        let arr = users
+        arr.find(x => x.id === user.id).name = user.name
+        arr.find(x => x.id === user.id).email = user.email
+        setUsers(arr)
+        await axios.put("https://jsonplaceholder.typicode.com/users/" + user.id, user)
+        alert("updated")
+    }
+
+    async function deleteUserLocal(id) {
+        let arr = users
+        
+        setUsers(arr.filter(x => x.id !== id))
+        await axios.delete("https://jsonplaceholder.typicode.com/users/" + id)
+        alert("deleted")
+    }
     
     
 
@@ -36,7 +54,7 @@ function MainComp() {
                 }
             }).map(item => { 
                 return <div key={item.id}>
-                    <UserComp userData={item}/><br/>
+                    <UserComp userData={item} callback={updateUserLocal} deleteCallBack={deleteUserLocal} /><br/>
                     </div> 
                     })
         }  
