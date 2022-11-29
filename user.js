@@ -3,6 +3,7 @@ import { useState } from "react";
 import PostsComp from "./posts";
 import TodosComp from "./todos";
 
+
 function UserComp(props) {
 
     const [showTasks, setShowTasks] = useState(false)
@@ -37,9 +38,7 @@ function UserComp(props) {
     }
     const getOtherData = () => {
         setShowOtherData(!showOtherData)
-    }
-
-    
+    }    
     const markCompleted = (id) => {
         let arr = todos;
         arr.find(x => x.id === id).completed = true
@@ -47,7 +46,9 @@ function UserComp(props) {
 
         setAllCompleted(arr.every(v=>v.completed===true))
     }
-
+    const search = () => {
+        
+    }
     return <div>
         
     
