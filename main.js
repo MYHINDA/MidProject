@@ -7,8 +7,15 @@ import UserComp from "./user";
 function MainComp() {
 
     const [users, setUsers] = useState([])
+    const [user, setUser] = useState({id:11, name:"", email:""})
+    const [isAddUser, setIsAddUser] = useState(false)
     const [query, setQuery] = useState("")
     
+    function addUser() {
+        setUser({ ...user, id: user.id + 1 })
+        setIsAddUser(false)
+        setUsers([...users, user])
+    }
     useEffect(() => {
         getUsers();
         
@@ -42,7 +49,7 @@ function MainComp() {
     return <div style={{padding:"10px"}}>
         search
         <input type="text" onChange={(e) => setQuery(e.target.value)} />
-        <input type="button" value="Add"  /><br/>
+        <input type="button" value="Add" onClick={()=>setIsAddUser(true)} /><br/>
         
         {
             users.filter(item => {
@@ -57,7 +64,14 @@ function MainComp() {
                     <UserComp userData={item} callback={updateUserLocal} deleteCallBack={deleteUserLocal} /><br/>
                     </div> 
                     })
-        }  
+        }
+        {
+            isAddUser && <div border="1">
+                Name: <input type={"text"} onChange={e => setUser({ ...user, name: e.target.value })} />
+                Email: <input type={"text"} onChange={e => setUser({ ...user, email: e.target.value })} />
+                <input type="button" value={"add"} onClick={()=>addUser()} />
+            </div>
+        }
     </div>
 }
 
