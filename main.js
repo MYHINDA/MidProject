@@ -7,15 +7,23 @@ import UserComp from "./user";
 function MainComp() {
 
     const [users, setUsers] = useState([])
-    const [user, setUser] = useState({id:11, name:"", email:""})
+
+    const [user, setUser] = useState({ id: 11, name: "", email: "", address:{} })
+
+    const [newAddress, setNewAddress] = useState({ street: "", city: "", zipcode: "" })
+    
     const [isAddUser, setIsAddUser] = useState(false)
+
     const [query, setQuery] = useState("")
     
     function addUser() {
-        setUser({ ...user, id: user.id + 1 })
+
+        setUser({ ...user, id: user.id + 1, address: newAddress })
+        
         setIsAddUser(false)
         setUsers([...users, user])
     }
+
     useEffect(() => {
         getUsers();
         
@@ -67,9 +75,14 @@ function MainComp() {
         }
         {
             isAddUser && <div border="1">
-                Name: <input type={"text"} onChange={e => setUser({ ...user, name: e.target.value })} />
-                Email: <input type={"text"} onChange={e => setUser({ ...user, email: e.target.value })} />
-                <input type="button" value={"add"} onClick={()=>addUser()} />
+                Name: <input type={"text"} onChange={e => setUser({ ...user, name: e.target.value })} /> <br/><br/>
+                Email: <input type={"text"} onChange={e => setUser({ ...user, email: e.target.value })} /><br /><br />
+                street: <input type={"text"} onChange={e => setNewAddress({ ...newAddress, street: e.target.value })} /><br /><br />
+                city: <input type={"text"} onChange={e => setNewAddress({ ...newAddress, city: e.target.value })} /><br /><br />
+                zipcode: <input type={"text"} onChange={e => setNewAddress({ ...newAddress, zipcode: e.target.value })} /><br /><br />
+                
+                <input type="button" value={"Cancel"} onClick={() => setIsAddUser(false)} /><br />
+                <input type="button" value={"add"} onClick={() => addUser()} />
             </div>
         }
     </div>

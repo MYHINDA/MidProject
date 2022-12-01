@@ -32,9 +32,9 @@ function UserComp(props) {
         resp = await axios.get("https://jsonplaceholder.typicode.com/posts/?userId=" + props.userData.id)
         setPosts(resp.data)
     }
-    const deleteUser = () => {
-        axios.delete("https://jsonplaceholder.typicode.com/users/" + props.userData.id)
-    }
+    // const deleteUser = () => {
+    //     axios.delete("https://jsonplaceholder.typicode.com/users/" + props.userData.id)
+    // }
     const getOtherData = () => {
         setShowOtherData(!showOtherData)
     }    
@@ -69,13 +69,13 @@ function UserComp(props) {
         <div style={{ padding: "10px", width: "30%", float: "right" }}>
             {
                 showPosts && <h3> post user {props.userData.id}</h3> && <br /> &&
-                <PostsComp posts={posts} />                
+                <PostsComp posts={posts} postsCallback = {setPosts} />                
             }
         </div>
         <div style={{ padding: "10px", width: "30%", float: "right" }}>
             {
                 showTasks && <h3> task user {props.userData.id}</h3> && <br /> &&
-                <TodosComp callback={markCompleted} tasks={todos} />
+                    <TodosComp callback={markCompleted} tasks={todos} todosCallback={ setTodos} />
             }
         </div>
         {
