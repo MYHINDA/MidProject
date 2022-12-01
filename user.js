@@ -64,7 +64,27 @@ function UserComp(props) {
                 onClick={() => props.callback(newUserData)} />
 
             <input type="button" value="Delete" style={{ background: "orange" }}
-                onClick={() => props.deleteCallBack(newUserData.id)} />
+                onClick={() => props.deleteCallBack(newUserData.id)} /><br />
+
+            {/* -------- Show Other data ---- */}
+            {
+                showOtherData &&
+                <div style=
+                    {{
+                        width: "320px",
+                        height: "100px",
+                        padding: "5px",
+                        borderRadius: "25px",
+                        border: "1px solid black",
+                    }}>
+
+                    <span style={{ padding: "10px" }}> street:</span> <input type="text" value={props.userData.address.street} /><br />
+                    <span style={{ padding: "10px" }}> city:</span> <input type="text" value={props.userData.address.city} /><br />
+                    <span style={{ padding: "10px" }}> zipcode:</span> <input type="text" value={props.userData.address.zipcode} /><br />
+
+                </div>
+
+            }
         </div>
         {/* -------- Show Posts ---- */}
         <div style={{ padding: "10px", width: "30%", float: "right" }}>
@@ -83,17 +103,7 @@ function UserComp(props) {
             }
         </div>
 
-        {/* -------- Show Other data ---- */}
-        {
-            showOtherData &&
-            <div style={{ width: "320px", height: "300px", padding: "5px", borderRadius: "25px", border: "1px solid black" }}>
-                <span style={{ padding: "16px" }}> street:</span> <input type="text" value={props.userData.address.street} />
-                <span style={{ padding: "23px" }}> city:</span> <input type="text" value={props.userData.address.city} /><br />
-                <span style={{ padding: "4px" }}> zipcode:</span> <input type="text" value={props.userData.address.zipcode} /><br />
 
-            </div>
-
-        }
 
 
     </div>
