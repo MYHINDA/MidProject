@@ -5,7 +5,7 @@ function TodosComp(props) {
     const [isNotCompleted, setIsNotCompleted] = useState(true)
 
     const [todo, setTodo] = useState({ title: "", completed: false })
-    
+
     const [isAddTodo, setIsAddTodo] = useState(false)
 
     const markComplete = (id) => {
@@ -14,8 +14,12 @@ function TodosComp(props) {
     }
 
     const addTodo = () => {
-        props.todosCallback([...props.tasks, todo])
-        setIsAddTodo(false)
+        if (todo.title !== "") {
+            props.todosCallback([...props.tasks, todo])
+            setIsAddTodo(false)
+            setTodo({ title: "", completed: false })
+        }
+
     }
 
     return <div style={{ border: "1px solid black", padding: "10px" }}>
@@ -35,7 +39,7 @@ function TodosComp(props) {
             isAddTodo && <div>
                 <input type={"text"} onChange={e => setTodo({ ...todo, title: e.target.value })} /><br />
                 <input type="button" value={"Cancel"} onClick={() => setIsAddTodo(false)} /><br />
-                <input type="button" value="Add" onClick={()=>addTodo()}/>
+                <input type="button" value="Add" onClick={() => addTodo()} />
             </div>
         }
 
