@@ -8,9 +8,7 @@ function MainComp() {
 
     const [users, setUsers] = useState([])
 
-    const [user, setUser] = useState({ id: 11, name: "", email: "", address:{} })
-
-    const [newAddress, setNewAddress] = useState({ street: "", city: "", zipcode: "" })
+    const [user, setUser] = useState({ id: 11, name: "", email: "", address: { street: "", city: "", zipcode: "" } })
     
     const [isAddUser, setIsAddUser] = useState(false)
 
@@ -18,10 +16,11 @@ function MainComp() {
     
     function addUser() {
 
-        setUser({ ...user, id: user.id + 1, address: newAddress })
+        setUser({ ...user, id: user.id + 1 })
         
-        setIsAddUser(false)
         setUsers([...users, user])
+
+        setIsAddUser(false)
     }
 
     useEffect(() => {
@@ -75,12 +74,13 @@ function MainComp() {
         }
         {
             isAddUser && <div border="1">
-                Name: <input type={"text"} onChange={e => setUser({ ...user, name: e.target.value })} /> <br/><br/>
-                Email: <input type={"text"} onChange={e => setUser({ ...user, email: e.target.value })} /><br /><br />
-                street: <input type={"text"} onChange={e => setNewAddress({ ...newAddress, street: e.target.value })} /><br /><br />
-                city: <input type={"text"} onChange={e => setNewAddress({ ...newAddress, city: e.target.value })} /><br /><br />
-                zipcode: <input type={"text"} onChange={e => setNewAddress({ ...newAddress, zipcode: e.target.value })} /><br /><br />
-                
+                Name: <input type={"text"} onChange={e => setUser({ ...user, name: e.target.value })} /> <br/>
+                Email: <input type={"text"} onChange={e => setUser({ ...user, email: e.target.value })} /><br />
+
+                street: <input type={"text"} onChange={e => setUser({ ...user, address: { ...user.address, street : e.target.value } } )} /><br />
+                city:   <input type={"text"} onChange={e => setUser({ ...user, address: { ...user.address, city: e.target.value } })} /><br />
+                zipcode: <input type={"text"} onChange={e => setUser({ ...user, address: { ...user.address, zipcode: e.target.value } })} /><br />
+
                 <input type="button" value={"Cancel"} onClick={() => setIsAddUser(false)} /><br />
                 <input type="button" value={"add"} onClick={() => addUser()} />
             </div>
