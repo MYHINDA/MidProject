@@ -8,8 +8,14 @@ function PostsComp(props) {
     const [isAddPost, setIsAddPost] = useState(false)
 
     const addPost = () => {
-        props.postsCallback([...props.posts, post])
-        setIsAddPost(false)
+        if (post.title !== "" && post.body!=="") {
+            props.postsCallback([...props.posts, post])
+            setIsAddPost(false)
+            setPost({ title: "", body: "" })
+        }
+        
+        
+        
     }
 
     return <div>
