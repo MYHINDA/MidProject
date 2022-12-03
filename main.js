@@ -54,9 +54,9 @@ function MainComp() {
     
 
     return <div style={{padding:"10px"}}>
-        search
-        <input type="text" onChange={(e) => setQuery(e.target.value)} />
-        <input type="button" value="Add" onClick={()=>setIsAddUser(true)} /><br/>
+        Search: &ensp; &ensp;
+        <input type="text" onChange={(e) => setQuery(e.target.value)} />&ensp; &ensp;
+        <input type="button" value="Add" onClick={() => setIsAddUser(true)} style={{background:"orange", border:"orange"}} /><br/><br/>
         
         {
             users.filter(item => {

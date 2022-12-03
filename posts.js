@@ -20,12 +20,12 @@ function PostsComp(props) {
 
     return <div>
 
-        Posts:   <input type="button" value="Add" onClick={()=>setIsAddPost(true)}/>
+        Posts - User {props.userId}: <input type="button" value="Add" onClick={() => setIsAddPost(true)}/><br/><br/>
         {
             props.posts.map((item,index)=>{
-                return <div key={index} style={{padding:"1px", border:"1px solid black", width:"80%"}}>
-                    Title:<input type="text" value={item.title} /><br />
-                    Body:<input type="text" value={item.body} /><br />
+                return <div key={index} style={{padding:"10px", border:"1px solid black", width:"80%"}}>
+                    Title:  {item.title} <br /><br/>
+                    Body:  {item.body}  <br />
             </div>
             })
         }

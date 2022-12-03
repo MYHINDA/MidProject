@@ -22,13 +22,13 @@ function TodosComp(props) {
 
     }
 
-    return <div style={{ border: "1px solid black", padding: "10px" }}>
-        Todos:   <input type="button" value="Add" onClick={() => setIsAddTodo(true)} />
+    return <div>
+        Todos - User {props.userId}:   <input type="button" value="Add" onClick={() => setIsAddTodo(true)} /><br/><br/>
         {
             props.tasks.map(item => {
                 return <div key={item.id} style={{ width: "80%", padding: "10px", border: "1px solid black" }}>
-                    Title:<input type="text" value={item.title} /><br />
-                    Completed: <input type="text" value={item.completed} /><br />
+                    Title: {item.title} <br />
+                    Completed:  <input type={"text"} value={item.completed }/>
                     {!item.completed && <input type="button" value="Mark Completed"
                         onClick={() => markComplete(item.id)} />}
 
