@@ -34,7 +34,7 @@ function TodosComp(props) {
                         !item.completed && <input type="button" value="Mark Completed"
                         onClick={() => markComplete(item.id)} style={{ backgroundColor: "orange" }} />
                     }
-<br/>
+
                 </div>
             })
         }
