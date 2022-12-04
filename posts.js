@@ -24,7 +24,7 @@ function PostsComp(props) {
         <div style={{border:"1px solid black",padding: "10px"}}>
             {
                 !isAddPost && props.posts.map((item, index) => {
-                    return <div key={index} style={{ padding: "10px", width: "94%", border: "1px solid black" }}>
+                    return <div key={index} style={{ margin:"10px", padding: "10px", width: "90%", border: "1px solid black" }}>
                         <u>Title:</u>  {item.title} <br /><br />
                         <u>Body:</u>  {item.body}  <br />
                     </div>

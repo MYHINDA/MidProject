@@ -27,7 +27,7 @@ function TodosComp(props) {
         <div style={{ border: "1px solid black", padding: "10px" }}>
         {
             !isAddTodo && props.tasks.map(item => {
-                return <div key={item.id} style={{ width: "94%", padding: "10px", border: "1px solid black" }}>
+                return <div key={item.id} style={{margin:"10px", width: "90%", padding: "10px", border: "1px solid black" }}>
                     <u>Title:</u> {item.title} <br />
                     <u>Completed:</u> {item.completed ? "True" : "False"} &ensp;&ensp;
                     {
