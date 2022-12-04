@@ -21,10 +21,10 @@ function PostsComp(props) {
     return <div >
 
         Posts - User {props.userId}: <input type="button" value="Add" onClick={() => setIsAddPost(true)} style={{ float: "right" }} /><br /><br />
-        <div style={{border:"1px solid black",padding: "10px"}}>
+        <div style={{ border: "1px solid black", padding: "10px" }}>
             {
                 !isAddPost && props.posts.map((item, index) => {
-                    return <div key={index} style={{ margin:"10px", padding: "10px", width: "90%", border: "1px solid black" }}>
+                    return <div key={index} style={{ margin: "10px", padding: "10px", width: "90%", border: "1px solid black" }}>
                         <u>Title:</u>  {item.title} <br /><br />
                         <u>Body:</u>  {item.body}  <br />
                     </div>
