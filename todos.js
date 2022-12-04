@@ -26,7 +26,7 @@ function TodosComp(props) {
         Todos - User {props.userId}:   <input type="button" value="Add" onClick={() => setIsAddTodo(true)} style={{ float: "right" }} /><br /><br />
         <div style={{ border: "1px solid black", padding: "10px" }}>
         {
-            props.tasks.map(item => {
+            !isAddTodo && props.tasks.map(item => {
                 return <div key={item.id} style={{ width: "94%", padding: "10px", border: "1px solid black" }}>
                     <u>Title:</u> {item.title} <br />
                     <u>Completed:</u> {item.completed ? "True" : "False"} &ensp;&ensp;
