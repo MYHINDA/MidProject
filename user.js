@@ -60,14 +60,14 @@ function UserComp(props) {
             padding: "10px",
             width: "30%"
         }}>
-            <span onClick={getTodosAndPosts}>ID:{props.userData.id}</span><br /><br />
-            Name: <input type="text" onfocus="this.value=''" value={newUserData.name}
+            <span onClick={getTodosAndPosts}><u>ID:</u>{props.userData.id}</span><br /><br />
+            <u>Name:</u> <input type="text" onfocus="this.value=''" value={newUserData.name}
                 onChange={e => setNewUserData({ ...newUserData, name: e.target.value })} /><br /><br />
 
-            Email: <input type="text" value={newUserData.email}
+            <u>Email:</u> <input type="text" value={newUserData.email}
                 onChange={e => setNewUserData({ ...newUserData, email: e.target.value })} /><br /><br />
 
-            <input type="button" value="Other data" onMouseOver={getOtherData} style={{ mergin: "18px" }} />&ensp; &ensp;
+            <input type="button" value="Other data" onMouseOver={getOtherData} />&ensp; &ensp;
 
             <input type="button" value="Update" style={{ background: "orange" }}
                 onClick={() => props.callback(newUserData)} />&ensp;
@@ -91,9 +91,9 @@ function UserComp(props) {
                 >
 
 
-                    <span style={{ padding: "10px" }}> Street:</span>  &ensp;&ensp;<input type="text" value={props.userData.address.street} /><br />
-                    <span style={{ padding: "10px" }}> City:</span> &ensp; &emsp;<input type="text" value={props.userData.address.city} /><br />
-                    <span style={{ padding: "10px" }}> Zipcode:</span>  <input type="text" value={props.userData.address.zipcode} /><br />
+                    <span style={{ padding: "10px" }}> <u>Street:</u></span>  &ensp;&ensp;<input type="text" value={props.userData.address.street} /><br />
+                    <span style={{ padding: "10px" }}> <u>City:</u></span> &ensp; &emsp;<input type="text" value={props.userData.address.city} /><br />
+                    <span style={{ padding: "10px" }}> <u>Zipcode:</u></span>  <input type="text" value={props.userData.address.zipcode} /><br />
 
                 </div>
 
@@ -101,7 +101,8 @@ function UserComp(props) {
         </div>
 
         {/* -------- Show Posts ---- */}
-        <div style={{ padding: "10px", width: "30%", float: "right" }}>
+        <div style={{
+            padding: "10px", width: "30%", float: "right"}}>
             {
                 showPosts && <h3> post user {props.userData.id}</h3> && <br /> &&
                 <PostsComp posts={posts} postsCallback={setPosts} userId={props.userData.id} />
