@@ -31,12 +31,12 @@ function PostsComp(props) {
                 })
             }
             {
-                isAddPost && <div>
-                    Title: <input type="text" onChange={e => setPost({ ...post, title: e.target.value })} /><br /><br />
-                    Body:  <input type="text" onChange={e => setPost({ ...post, body: e.target.value })} /><br /><br />
+                isAddPost && <div style={{ height: "90px" }}>
+                    <u>Title:</u> <input type="text" onChange={e => setPost({ ...post, title: e.target.value })} /><br /><br />
+                    <u>Body:</u>  <input type="text" onChange={e => setPost({ ...post, body: e.target.value })} /><br />
 
-                    <input type="button" value={"Cancel"} onClick={() => setIsAddPost(false)} />
-                    <input type="button" value={"Add"} onClick={() => addPost()} />
+                    <input type="button" value="Cancel" onClick={() => setIsAddPost(false)} style={{ float: "right" }} />
+                    <input type="button" value="Add" onClick={() => addPost()} style={{ float: "right" }} />
                 </div>
             }
         </div>

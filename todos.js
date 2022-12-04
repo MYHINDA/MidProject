@@ -30,17 +30,19 @@ function TodosComp(props) {
                 return <div key={item.id} style={{ width: "94%", padding: "10px", border: "1px solid black" }}>
                     <u>Title:</u> {item.title} <br />
                     <u>Completed:</u> {item.completed ? "True" : "False"} &ensp;&ensp;
-                    {!item.completed && <input type="button" value="Mark Completed"
-                        onClick={() => markComplete(item.id)} style={{backgroundColor:"orange"}} />}
-
+                    {
+                        !item.completed && <input type="button" value="Mark Completed"
+                        onClick={() => markComplete(item.id)} style={{ backgroundColor: "orange" }} />
+                    }
+<br/>
                 </div>
             })
         }
         {
             isAddTodo && <div>
-                <input type={"text"} onChange={e => setTodo({ ...todo, title: e.target.value })} /><br />
-                <input type="button" value={"Cancel"} onClick={() => setIsAddTodo(false)} /><br />
-                <input type="button" value="Add" onClick={() => addTodo()} />
+                <u>Todo:</u><input type={"text"} onChange={e => setTodo({ ...todo, title: e.target.value })} /><br />
+                <input type="button" value="Cancel" onClick={() => setIsAddTodo(false)} style={{float:"right"}} /> 
+                <input type="button" value="Add" onClick={() => addTodo()} style={{ float: "right" }} />&emsp;&emsp;
             </div>
         }
 

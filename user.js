@@ -105,7 +105,7 @@ function UserComp(props) {
             padding: "10px", width: "30%", float: "right"}}>
             {
                 showPosts && <h3> post user {props.userData.id}</h3> && <br /> &&
-                <PostsComp posts={posts} postsCallback={setPosts} userId={props.userData.id} />
+                <PostsComp posts={posts} postsCallback={setPosts} userId={props.userData.id} /> 
             }
         </div>
 
@@ -114,7 +114,7 @@ function UserComp(props) {
         <div style={{ padding: "10px", width: "30%", float: "right" }}>
             {
                 showTasks && <h3> task user {props.userData.id}</h3> && <br /> &&
-                <TodosComp callback={markCompleted} tasks={todos} todosCallback={setTodos} userId={props.userData.id} />
+                <TodosComp callback={markCompleted} tasks={todos} todosCallback={setTodos} userId={props.userData.id} /> 
             }
         </div>
 
